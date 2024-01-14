@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/styles/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/styles/styles.css" />
+        <script src="./assets/scripts/bootstrap.bundle.min.js" defer></script>
+        <script src="./assets/scripts/main.js" defer></script>
+        <title>Snake</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Games</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link mx-5" href="#">Snake</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="#">Other</a>
+                        </li>
+                    </ul>
+              </div>
+          </nav>
+        <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 py-5 justify-item-center">
+                            <h2 class="text-center py-5">Snake</h2>
+                            <canvas width="400" height="400"></canvas>
+                        </div>
+                        <div class="col-mg-6 py-5">
+                            <h2 class="text-center py-5">Flying Ducky</h2>
+                            <div class="background"></div>
+                            <img src="./assets/img/canard.svg" alt="Petit canard volant jaune" class="duck">
+                            <div class="message">
+                                Enter To Start Game <p><span style="color:red">&uarr;</span> ArrowUp to Control</p>
+                            </div>
+                            <div class="score">
+                                <span class="scoreTitle"></span>
+                                <span class="scoreValue"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </body>
+</html>

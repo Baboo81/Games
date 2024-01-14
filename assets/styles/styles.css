@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat&family=Merriweather:wght@300&family=Playfair+Display&family=Poppins:wght@100;300&family=Ranchers&display=swap');
+
+:root
+{
+    --violet : #686bae;
+    --yellow : #f1eda3;
+    --pink : #e5d2e0;
+    --blue : #05a9c7;
+    --noir : #000;
+}
+
+body
+{
+    background-color: var(--noir);
+    font-family: 'Ranchers', sans-serif;
+}
+
+nav
+{
+    height: 15em;
+    background: url(../img/banner.jpg)center no-repeat;
+}
+
+.nav-link
+{
+    color: var(--blue);
+    font-size: 4em;
+}
+
+.nav-link:hover
+{
+    color: var(--violet);
+}
+
+.navbar-brand
+{
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--violet);
+}
+
+h2
+{
+    color: var(--yellow);
+    font-size: 4em;
+}
+
+/*Snake*/
+canvas
+{
+    border: 4px solid #686bae;
+}
+/*Snake END*/
+
+/*Flying Ducky*/
+.duck
+{
+    height: 5em;
+    width: 5em;
+    position: fixed;
+    top: 40vh;
+    left: 30vw;
+    z-index: 100;
+}
+
+.background
+{
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/backGroungDucky.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.pip_sprite
+{
+    position: fixed;
+    top: 40vh;
+    left: 100vw;
+    height: 70vh;
+    width: 6vw;
+    background: radial-gradient(lightgreen 50%, green);
+    border: 5px solid black;
+}
+
+.message
+{
+    position: absolute;
+    z-index: 10;
+    color: black;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+}
+
+.messageStyle
+{
+    background: white;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5%;
+}
+
+.score
+{
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    font-size: 10vh;
+    font: 100;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.scoreValue
+{
+    color: var(--yellow);
+    font-weight: bold;
+}
+
