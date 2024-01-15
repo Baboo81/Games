@@ -97,3 +97,124 @@ function collision(head, array) {
 let game = setInterval(draw, 100);
 
 //Flying Ducky:
+let moveSpeed = 3, grativy = 0.5;
+let duck = document.querySelector('duck');
+//let img = document.getElementById('bird-1');
+
+let bird_props = bird.getBoundingClientRect();
+
+let background = document.querySelector('.background').getBoundingClientRect();
+let score_Values = document.querySelector('.scoreValue');
+let msg = document.querySelector('.message');
+let score_Title = document.querySelector('.scoreTitle');
+let game_state = 'Start';
+
+
+img.style.display = 'none';
+msg.classList.add('maessageStyle');
+
+document.addEventListener('keydown', (e) => {
+    if(e.key == 'Enter' && game_state != 'Play') {
+        document.querySelector('.pipe_sprite').forEach((e) => {
+            e.remove();
+        });
+        img.style.display = 'block';
+        duck.style.top = '40vh';
+        game_state = 'Play';
+        msg.innerHTML = '';
+        score_Title.innerHTML = 'Score : ';
+        score_Values.innerHTML = '0';
+        msg.classList.remove('messageStyle');
+        play();
+    }
+});
+
+function play () {
+    function move () {
+        if(game_state != 'Play') return;
+
+        let pipe_sprite = document.querySelectorAll('.pipe_sprite');
+        pipe_sprite.forEach((element) => {
+            let pipe_sprite_props = element.getBoundingClientRect();
+            bird_props = bird.getBoundingClientRect();
+
+            if(pipe_sprite_props.right <= 0) {
+                element.remove();
+            } else {
+                if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
+                    game_state = 'End';
+                    msg.innerHTML = 'Game Over' . fontcolor('red') + '<br/>Press Enter To Restart';
+                    msg.classList.add('messageStyle');
+                    img.style.display = 'none';
+                    return;
+                } else {
+                    if(pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
+                        score_Values.innerHTML =+ score_Values + 1;
+                    }
+                    element.style.left = pipe_sprite_props.left - move_speed + 'px';
+                }
+            }
+        });
+        requestAnimationFrame(move);
+    }
+    requestAnimationFrame(move);
+
+    let duck_dy = 0;
+    function apply_gravity() {
+        if(game_state != 'Play') return;
+        duck_dy = duck_dy + grativy;
+        document.addEventListener('keydown', (e) => {
+            if(e.key == 'ArrowUp' || e.key == '') {
+                img.src = '/assets/img/canard.svg';
+                duck_dy = -7.6;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if(e.key == 'ArrowUp' || e.key == ''){
+                img.src = '/assets/img/canard2.svg';
+            }
+        });
+
+        if(bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
+            game_state = 'End';
+            msg.style.left = '28vw';
+            window.location.reload();
+            msg.classList.remove('messageStyle');
+            return;
+        }
+        duck.style.top = bird_props.top + duck_dy + 'px';
+        bird_props = duck.getBoundingClientRect();
+        requestAnimationFrame(apply_gravity);
+    }
+    requestAnimationFrame(apply_gravity);
+
+    //Création de pipes:
+    let pipe_separation = 0;
+    let pipe_gap = 35;
+
+    function create_pipe () {
+        if(game_state != 'Play') return;
+
+        if(pipe_separation > 115) {
+            pipe_separation = 0;
+            let pipePos = Math.floor(Math.random() * 43) + 8;
+            let pipe_sprite_inv = document.createElement('div');
+            pipe_sprite_inv.className = 'pipe_sprite';
+            pipe_sprite_inv.style.top = pipePos - 70 + 'vh';
+            pipe_sprite_inv.style.left = '100vw';
+
+            document.body.appendChild(pipe_sprite_inv);
+            let pipe_sprite = document.createElement('div');
+            pipe_sprite.className = 'pipe_sprite';
+            pipe_sprite.style.top = pipePos + pipe_gap + 'vh';
+            pipe_sprite.style.left = '100vw';
+            pipe_sprite.increase_score = '1';
+
+            document.body.appendChild(pipe_sprite);
+        }
+        pipe_separation++;
+        requestAnimationFrame(create_pipe);
+    }
+    requestAnimationFrame(create_pipe);
+}
