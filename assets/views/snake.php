@@ -1,5 +1,5 @@
 <?php
-    include_once "../components/nav/navBar.php";
+    include "../components/nav/navBar.php";
 ?>
 
 <div class="container">
