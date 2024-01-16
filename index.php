@@ -1,6 +1,12 @@
 <?php
-    include("./assets/components/header/header.php");
-    include("./assets/views/snake.php");
-    include("./assets/views/flyingDucky.php");
-    include("./assets/components/footer/footer.php");
+    include_once "./assets/components/header/header.php";
+    include_once "./assets/components/nav/navBar.php";
+?>
+
+<section class="home">
+
+</section>
+
+<?php
+    include_once "./assets/components/footer/footer.php";
 ?>

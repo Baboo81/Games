@@ -36,13 +36,20 @@ nav
 {
     font-size: 2em;
     font-weight: bold;
-    color: var(--violet);
+    color: var(--yellow);
 }
 
 h2
 {
     color: var(--yellow);
     font-size: 4em;
+}
+
+.home
+{
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)) url(../img/backGroundHome.jpg) center center fixed no-repeat;
+    background-size: cover;
+    height: 1200px;
 }
 
 /*Snake*/
@@ -150,4 +157,5 @@ canvas
         width: 14vw;
     }
 }
+/*Flying Ducky END*/
 

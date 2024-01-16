@@ -1,3 +1,6 @@
+<?php
+    include_once "../components/nav/navBar.php";
+?>
 
 <div class="container">
     <div class="row">
